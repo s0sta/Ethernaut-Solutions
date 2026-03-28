@@ -181,6 +181,11 @@ contract FallbackSolution is Script {
     }
 }
 ```
+#### **Use this command Terminal**
+
+```
+forge script script/NameContractFile --rpc-url $SEPOLIA_RPC_URL --tc NameContract --broadcast --slow 
+```
 
 ## **Why This Works**
 
