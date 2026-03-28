@@ -150,7 +150,7 @@ cast send $CONTRACT "Fal1out()" --private-key $PRIVATE_KEY
 cast call $CONTRACT "owner()(address)"
 ```
 
-### **Method 3 --- Foundry**
+### **Method 3 --- Foundry Script**
 
 ```
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
