@@ -248,6 +248,3 @@ We:
 
 -   win 10 times
 
-* * * * *
-
-Send next level when ready.
